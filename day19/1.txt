@@ -1,0 +1,136 @@
+usercontroller
+/zjs/login  get     //登录
+need    String name,String pass
+return  string token           //记录用户信息的token字符串 在其它接口查询是用到
+
+/zjs/register post  //注册用户
+need    String name,String password,int age,String phone,String info
+return  boolean flag     //状态值
+
+userInfocontroller
+/userinfo/find  get     //查询用户信息
+need    string token    //token串
+return  list    //返惠用户信息 包括id，用户名，年龄，电话，余额，优惠券，简介
+
+/userinfo/update   post     //更新用户信息
+need    String token,int age,String phone,String info
+return  boolean flag        //状态值
+
+userAddrController
+/useraddr/find  get //查询用户的地址信息
+need    String token    
+return  list    //返回用户所以的地址信息
+
+/useraddr/update post //更新用户地址
+need    String addr,int id
+return  int     //状态码
+
+/useraddr/c_default get //设置默认地址
+need    int oid,int nid    //oid为旧的默认地址 nid为新的默认地址
+return  int     //状态值
+
+/useraddr/add   post    //添加地址
+need    String addr,String token
+return  UserAddr    //返回新添加的地址信息
+
+/useraddr/del   get     //删除地址
+need    int id      //具体地址的id
+return  boolean     //状态值
+
+yhqController
+/yhq/find   get     //获取所有优惠券信息
+need    null
+return  list        //一个优惠券对象的列表
+
+/yhq/del    get     //删除优惠券信息
+need    int id      //优惠券id
+return  boolean     //状态值
+
+/yhq/insert post    //插入优惠券信息
+need    yhqInfos    //需要一个优惠券对象（优惠金额，开始时间，结束时间，是否启用）
+return  yhqInfos    //返回新建对象
+
+/yhq/isrun  get     //改变启用状态
+need int id,int isrun   //优惠券id和它改变后的状态
+return boolean          //返回状态值
+
+orderscontroller
+/orders/findall     get     //查询所有订单
+need    null
+return  list<orders>        //返回订单列表
+
+/orders/updatestate     get     //更新订单状态
+need    int id,String state     //订单id 和订单修改后的状态
+return  boolean             //返回状态值
+
+/orders/addorders   post    //添加订单
+need    orders              //需要一个order对象 userid,bookid,boonum,time,state
+return  boolean         //返回一个状态值
+
+/orders/findone    get  //查找订单
+need    int id          //订单id
+return  orders          //返回一个order对象
+
+
+czinfocontroller
+/czinfo/findall get //查询所有充值记录
+need    null
+return  List<czinfos>   //返回充值记录的列表对象
+
+/czinfo/findbyuserid   get //通过用户名查找充值记录
+need int userid     //用户id
+return  list<czinfos>   //返回充值记录的列表对象
+
+/czinfo/findbyid   get //通过充值记录id查找
+need   int id   //订单id
+return czinfo   //返回一个充值对象
+
+/czinfo/insert  post    //插入一个充值信息
+need czinfo     //需要一个充值记录对象 userid,time,money
+return  czinfo  //返回插入对象
+
+
+bookinfocontroller
+/bookinfo/find  get //返回所有书籍信息
+need null
+return  list<bookinfo>  //返回书籍信息的列表
+
+/bookinfo/namelike  get //模糊查找书籍名
+need String name    //书名关键字
+return List<bookinfo>       //返回书籍信息的列表
+
+/bookinfo/insert    post    //插入书籍信息
+need bookinfo   //需要一个书籍信息对象name,price,type,num,iinfo,picture,publisher,author
+return  bookinfo    //返回插入信息
+
+/bookinfo/del   get //删除书籍信息
+need int id     //书籍信息id
+return  boolean     //返回一个状态值
+
+/bookinfo/delnum    get //更新书记数量信息
+need int id,int num     //书籍信息id，书籍数量
+return bookinfo     //返回更新后的书籍信息
+
+/bookinfo/uodatebookinfo    post    //更新书籍信息
+need    bookinfo    //需要bookinfo对象
+return  bookinfo        //返回更新后的书籍信息
+
+
+bookcartcontroller
+/bookcart/findbyuserid  get     //通过用户id查询购物车
+need    int userid  //用户id
+return  list<bookcart>      //返回购物车列表
+
+/bookcart/addbook   post    //增加书籍信息
+need bookcart   //购物车信息 userid,bookid,num
+return bookcart     //返回更新后的购物车信息
+
+/bookcart/del   get     //删除购物信息
+need    int id      //购物车信息id
+return  boolean     //返回一个状态值
+
+
+/bookcart/updatenum post    //更新购物所需要的数量
+need   int id,int num   //  购物车id 数量信息
+return  boolean     //返回一个状态值
+
