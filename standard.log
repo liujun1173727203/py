@@ -1,0 +1,3 @@
+2022-05-01 19:20:11,508 standard日志.py[line:18] WARNING warn
+2022-05-01 19:20:11,509 standard日志.py[line:19] ERROR error
+2022-05-01 19:20:11,509 standard日志.py[line:20] CRITICAL critical

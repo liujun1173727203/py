@@ -1,0 +1,5 @@
+2022-05-01 17:51:58,216 low日志.py[line:10] DEBUG debug
+2022-05-01 17:51:58,218 low日志.py[line:11] INFO info
+2022-05-01 17:51:58,218 low日志.py[line:12] WARNING warn
+2022-05-01 17:51:58,218 low日志.py[line:13] ERROR error
+2022-05-01 17:51:58,218 low日志.py[line:14] CRITICAL critical
